@@ -5,16 +5,15 @@ var mongoose = require("mongoose");
 var Url = require("./url.js");
 var base58 = require("./base58");
 var url = require("url");
+//var config = require('./config');
 
-var theUrl = "http://urlshortener-honneure.c9users.io/";
-/* function theUrl(req) {
-  return url.format({
+
+var theUrl = function (req) { 
+    return url.format({
     protocol: req.protocol,
-    hostname: req.hostname,
-    pathname: req.originalUrl
+    hostname: req.hostname
   });
-} */ 
-
+};
 
 // var favicon = require('serve-favicon');
 
@@ -45,7 +44,7 @@ mongoose.connect('mongodb://localhost:27017/test'); //pas de données rajoutées
 
 app.get("/", function(req, res) {
     res.sendFile(path.join(__dirname, 'views/index.html'));
-    console.log(theUrl);
+    console.log(theUrl(req));
 });
 
 app.post("/api/shorten", function (req, res) {
@@ -57,7 +56,7 @@ app.post("/api/shorten", function (req, res) {
         
         if (doc) {
             
-            shortUrl = theUrl + base58.encode(doc._id);
+            shortUrl = theUrl(req) + "/" + base58.encode(doc._id);
             res.send({'shortUrl': shortUrl});
         }
         
@@ -70,7 +69,7 @@ app.post("/api/shorten", function (req, res) {
             newUrl.save(function(err) {
                 if (err) throw err; 
                 
-                shortUrl = theUrl + base58.encode(newUrl._id);
+                shortUrl = theUrl(req) + "/" + base58.encode(newUrl._id);
                 
                 res.send({'shortUrl': shortUrl}); 
             });
@@ -92,7 +91,7 @@ app.get("/:encoded_id", function (req, res) {
         }
         else{
             // nothing found, let's take them home 
-            res.redirect(theUrl);
+            res.redirect(theUrl(req));
         }
     });
     
