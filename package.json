@@ -2,7 +2,7 @@
   "name": "shortener",
   "version": "1.0.0",
   "engines": {
-    "node": "4.1.1"
+    "node": "4.6.1"
   },
   "description": "",
   "main": "index.js",
