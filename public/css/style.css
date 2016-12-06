@@ -2,10 +2,9 @@
   outline: 0 !important;
 }
 
-html,
-body {
+html,body {
   height: 100%;
-  background-color: #4791D2;
+  background-color: #6A00FD;
 }
 
 body {
@@ -16,7 +15,7 @@ body {
 
 .btn-shorten {
   color: #ffffff;
-  background-color: #F89406;
+  background-color: red;
   border: none;
 }
 
@@ -25,7 +24,7 @@ body {
 .btn-shorten:active,
 .btn-shorten.active {
   color: #ffffff;
-  background-color: #FA8900;
+  background-color: red;
   border: none;
 }
 
@@ -51,32 +50,37 @@ body {
   padding: 30px;
 }
 
-.inner h4 {
-  padding-bottom: 30px;
-}
-
-.glyphicon-link {
+.glyphicon-fire {
   font-size: 2em;
+
 }
 
 .inner h1 {
   margin-top: 5px;
+  padding-bottom: 25px;
 }
 
 #link {
-  display: none;
-  padding-top: 15px;
+  display: block;
+  padding-top: 50px;
+  width: 620px;
+  height: 101px;
 }
+
+
 
 #link a{
-  color: #F89406;
-  font-size: 1.5em;
-  margin-right: 20px;
+  color: #7B013C;
+  font-size: 40px;
+
 }
 
-@media (min-width: 768px) {
+@media (max-width: 768px) {
   .main-container {
     width: 100%;
+  }
+  #link {
+    width: 50%;
   }
 }
 
